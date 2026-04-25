@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -21,13 +22,28 @@ useState([]);
 
 useEffect(() => {
 
-fetch("/api/store/products")
-.then(res => res.json())
-.then(setProducts);
+const fetchProducts = async () => {
 
-fetch("/api/categories/dropdown")
-.then(res => res.json())
-.then(setCategories);
+try {
+
+const res = await fetch(
+process.env.NEXT_PUBLIC_BASE_URL +
+"/api/store/products"
+);
+
+const data = await res.json();
+
+setProducts(data);
+
+} catch (err) {
+
+console.error("Product fetch failed");
+
+}
+
+};
+
+fetchProducts();
 
 }, []);
 
@@ -91,7 +107,7 @@ All
 </Link>
 
 
-{categories.map(cat => (
+{categories?.map(cat => (
 
 <Link
 key={cat._id}
@@ -159,7 +175,7 @@ product={product}
 
 <div className="space-y-16">
 
-{categories.map(cat => {
+{categories?.map(cat => {
 
 const categoryProducts =
 products.filter(
@@ -195,7 +211,7 @@ View All
 
 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
 
-{categoryProducts.map(product => (
+{categoryProducts?.map(product => (
 
 <ProductCard
 key={product._id}
