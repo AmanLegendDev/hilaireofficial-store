@@ -61,7 +61,7 @@ radiance, and everyday elegance.
 <div className="flex gap-4 mt-8 flex-wrap">
 
 <Link
-href="/products"
+href="/products" prefetch={true}
 className="bg-primary text-white px-7 py-3 rounded-xl shadow-soft hover:scale-[1.03] transition"
 >
 
@@ -71,7 +71,7 @@ Shop Now
 
 
 <Link
-href="/products"
+href="/products" prefetch={true}
 className="border border-primary text-primary px-7 py-3 rounded-xl hover:bg-primary hover:text-white transition"
 >
 

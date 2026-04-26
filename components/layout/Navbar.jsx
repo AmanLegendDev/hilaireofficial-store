@@ -159,7 +159,7 @@ className="md:hidden bg-white border-t"
 
 
 <Link
-href="/products"
+href="/products" prefetch
 onClick={() => setOpen(false)}
 className="flex items-center gap-2 text-sm font-medium"
 >

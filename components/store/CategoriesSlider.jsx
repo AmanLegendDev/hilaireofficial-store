@@ -49,7 +49,7 @@ export default function CategoriesSlider() {
             >
 
               <Link
-                href="/products"
+                href="/products" prefetch={true}
                 className="bg-white rounded-2xl shadow-soft hover:shadow-lg transition group block text-center p-6"
               >
 

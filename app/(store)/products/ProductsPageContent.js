@@ -119,7 +119,7 @@ healthy hair and confident everyday care.
 <div className="flex gap-3 min-w-max">
 
 <Link
-href="/products"
+href="/products" prefetch
 className={`px-5 py-2 rounded-full border transition whitespace-nowrap
 
 ${!selectedCategory
@@ -135,7 +135,7 @@ All
 
 <Link
 key={cat._id}
-href={`/products?category=${cat._id}`}
+href={`/products?category=${cat._id}`} prefetch
 className={`px-5 py-2 rounded-full border transition whitespace-nowrap
 
 ${selectedCategory === cat._id

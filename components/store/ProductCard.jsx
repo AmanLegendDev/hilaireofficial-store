@@ -1,17 +1,25 @@
 import Link from "next/link";
-
+import Image from "next/image";
 export default function ProductCard({ product }) {
 
 return (
 
-<Link href={`/products/${product.slug}`}>
+<Link href={`/products/${product.slug}`} prefetch={true}>
 
 <div className="bg-white rounded-2xl shadow-soft hover:shadow-lg transition overflow-hidden cursor-pointer group">
 
-<img
+<div className="relative w-full h-44 overflow-hidden">
+
+<Image
 src={product.images?.[0] || "/placeholder.png"}
-className="w-full h-44 object-cover group-hover:scale-105 transition"
+alt={product.title}
+fill
+sizes="(max-width: 768px) 50vw, 25vw"
+className="object-cover group-hover:scale-105 transition"
+loading="lazy"
 />
+
+</div>
 
 <div className="p-4">
 

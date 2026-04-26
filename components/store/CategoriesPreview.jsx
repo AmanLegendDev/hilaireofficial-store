@@ -94,7 +94,7 @@ className="group relative bg-white rounded-2xl shadow-soft overflow-hidden borde
 <div className="text-center mt-14">
 
 <Link
-href="/products"
+href="/products" prefetch={true}
 className="bg-primary text-white px-8 py-3 rounded-xl shadow-soft hover:scale-[1.03] transition"
 >
 
