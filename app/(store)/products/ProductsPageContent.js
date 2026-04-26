@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 
 import { useEffect, useState } from "react";
@@ -15,8 +14,7 @@ const searchParams = useSearchParams();
 const selectedCategory =
 searchParams.get("category");
 
-const [products, setProducts] =
-useState([]);
+const [products, setProducts] = useState(null);
 
 const [categories, setCategories] =
 useState([]);
@@ -29,7 +27,9 @@ try {
 
 const productsRes = await fetch(
 "/api/store/products",
-{ cache: "no-store" }
+{
+next: { revalidate: 60 }
+}
 );
 
 const productsData =
@@ -40,7 +40,9 @@ setProducts(productsData);
 
 const categoriesRes = await fetch(
 "/api/categories/dropdown",
-{ cache: "no-store" }
+{
+next: { revalidate: 60 }
+}
 );
 
 const categoriesData =
@@ -69,6 +71,12 @@ p =>
 p.category?._id?.toString() === selectedCategory
 )
 : [];
+if (!products)
+return (
+<div className="p-10 text-center">
+Loading products...
+</div>
+);
 
 
 return (
